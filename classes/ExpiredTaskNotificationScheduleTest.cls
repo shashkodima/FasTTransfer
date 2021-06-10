@@ -11,7 +11,7 @@ private class ExpiredTaskNotificationScheduleTest {
         Test.startTest();
         ExpiredTaskNotificationSchedule newJob = new ExpiredTaskNotificationSchedule();
         String cron = '0 0 22 * * ?';
-        String jobId = System.schedule('Expired task notification process', cron, newJob);
+        String jobId = System.schedule('Expired task notification process test', cron, newJob);
         Test.stopTest();
 
         CronTrigger currentCronTrigger = [
