@@ -39,6 +39,8 @@ private class ExpiredTaskNotificationBatchTest {
             newTask.Status = Constants.TASK_STATUS_NEW;
             actualTasks.add(newTask);
         }
+        insert expiredTasks;
+        insert actualTasks;
 
         Test.startTest();
         try {
