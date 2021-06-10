@@ -1,0 +1,34 @@
+public class Constants {
+    public static final String PHONE_PATTERN_POLAND_BELARUS_RUSSIA = '\\+375-[0-9]{2}-[0-9]{7}||\\+7-[0-9]{3}-[0-9]{7}||\\+48-[0-9]{2}-[0-9]{7}';
+    public static final String REST_COUNTRIES_CALLING_CODE_ENDPOINT = 'https://restcountries.eu/rest/v2/callingcode/';
+    public static final String REQUEST_METHOD_GET = 'GET';
+    public static final Integer STATUS_CODE_200 = 200;
+    public static final Integer STATUS_CODE_404 = 404;
+    public static final String RESTCOUNTRIES_JSON_RESPONSE_BODY_FORECAST_NAME_KEY = 'name';
+    public static final String MESSAGE_CALLOUT_ERROR = 'Callout error!';
+    public static final String ERROR_PROBLEM_SENDING_NOTIFICATION = 'Problem sending notification: ';
+    public static final String TASK_STATUS_NEW = 'New';
+    public static final String URI_PARAMETER_CLIENT_ID = 'clientId';
+    public static final String VALUE_ERROR = 'error';
+    public static final String VALUE_SUCCESS = 'success';
+    public static final String VALUE_WRONG_PARAMETER = 'Wrong parameter';
+    public static final String VALUE_CLIENT_NOT_FOUND = 'Client not found';
+    public static final String ORDER_STATUS_FINISHED = 'Finished';
+    public static final String ORDER_STATUS_CANCELLED = 'Cancelled';
+    public static final String ACCOUNT_ID_FIRST_SYMBOLS = '001';
+    public static final String CONTACT_ID_FIRST_SYMBOLS = '003';
+    public static final Integer AMOUNT_ZERO = 0;
+    public static final String STAGE_NEW = 'New';
+    public static final String ENGLISH_LANGUAGE = 'EN';
+    public static final String STATUS_CLOSED_CONVERTED = 'Closed - Converted';
+    public static final String STATUS_DRAFT = 'Draft';
+    public static final String STATUS_WINNER = 'Winner';
+    public static final String STATUS_LOSER = 'Loser';
+    public static final String STAGE_PRICE_QUOTE = 'Price Quote';
+    public static final String RECORDTYPE_NAME_OFFERS_CALL = 'Offers_call';
+    public static final String PRIORITY_STATUS_HIGH = 'High';
+    public static final String NAME_SALES_MANAGER_PROFILE = 'Sales Manager';
+    public static final String ACCESS_LEVEL_NONE = 'None';
+    public static final String ACCESS_LEVEL_EDIT = 'Edit';
+    public static final String NAME_PARTNER_PROFILE = 'FasTTransfer Partner';
+}
