@@ -1,0 +1,191 @@
+<aura:component controller="ShippingRequestController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >    
+    <aura:attribute name="unidentifiedCustomer" type="Boolean" access="private" default="false"/>
+    <aura:attribute name="nameCompany" type="String" access="private"/>
+    <aura:attribute name="companyEmail" type="String" access="private"/>
+    <aura:attribute name="companyPhone" type="String" access="private"/>
+    <aura:attribute name="companyType" type="String" access="private"/>
+    <aura:attribute name="companyTypeOptions" type="List" access="private"
+                    default="[
+                             {'label': 'Individual', 'value': 'Individual'},
+                             {'label': 'Legal entity', 'value': 'Legal entity'},
+                             ]"/>
+    <aura:attribute name="contactFirstName" type="String" access="private"/>
+    <aura:attribute name="contactLastName" type="String" access="private"/>
+    <aura:attribute name="contactEmail" type="String" access="private"/>
+    <aura:attribute name="contactPhone" type="String" access="private"/> 
+    <aura:attribute name="shippingName" type="String" access="private"/>
+    <aura:attribute name="cargoWeight" type="Integer" access="private"/>
+    <aura:attribute name="cargoType" type="String" access="private"/>
+    <aura:attribute name="cargoTypeOptions" type="List" access="private"
+                    default="[
+                             {'label': 'Food', 'value': 'Food'},
+                             {'label': 'Cars and Other Venicles', 'value': 'Cars and Other Venicles'},
+                             {'label': 'Animals', 'value': 'Animals'},
+                             {'label': 'Technics', 'value': 'Technics'},
+                             ]"/>
+    <aura:attribute name="fromCity" type="String" access="private"/>
+    <aura:attribute name="toCity" type="String" access="private"/>
+    <aura:attribute name="cityOptions" type="List" access="private"
+                    default="[
+                             {'label': 'Minsk', 'value': 'Minsk'},
+                             {'label': 'Vitsebsk', 'value': 'Vitsebsk'},
+                             {'label': 'Grodno', 'value': 'Grodno'},
+                             {'label': 'Brest', 'value': 'Brest'},
+                             {'label': 'Babruysk', 'value': 'Babruysk'},
+                             {'label': 'Pinsk', 'value': 'Pinsk'},
+                             {'label': 'Orsha', 'value': 'Orsha'},
+                             {'label': 'Mazyr', 'value': 'Mazyr'},
+                             {'label': 'Salihorsk', 'value': 'Salihorsk'},
+                             ]"/>
+    <aura:attribute name="orderDate" type="Date" access="private"/>
+    <aura:attribute name="comments" type="String" access="private"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <lightning:card class="slds-p-left_x-small slds-p-right_medium">
+        <aura:if isTrue="{!v.unidentifiedCustomer}">
+            <h1 class="slds-text-heading_medium slds-p-vertical_small slds-border_bottom">Company Information</h1>
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="4" class="slds-p-right_small">
+                    <div class="custom-box">
+                        <lightning:input aura:id="inputData"
+                                         value="{!v.nameCompany}"
+                                         placeholder="Name*"
+                                         required="true"/>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="4" class="slds-p-horizontal_small">
+                    <div class="custom-box">
+                        <lightning:input aura:id="inputData"
+                                         value="{!v.companyEmail}"
+                                         placeholder="Email*"
+                                         type="Email"
+                                         required="true"/>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="4" class="slds-p-left_small">
+                    <div class="custom-box">
+                        <lightning:input aura:id="inputData"
+                                         value="{!v.companyPhone}"
+                                         placeholder="Phone*"
+                                         type="tel"
+                                         pattern="\+375-[0-9]{2}-[0-9]{7}|\+7-[0-9]{3}-[0-9]{7}|\+48-[0-9]{2}-[0-9]{7}"
+                                         required="true"/> 
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="4" class="slds-p-right_small">
+                    <div class="custom-box">
+                        <lightning:combobox aura:id="inputData"
+                                            value="{!v.companyType}"
+                                            placeholder="Type*"
+                                            options="{!v.companyTypeOptions}"
+                                            required="true"/>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+            
+            <h1 class="slds-text-heading_medium slds-p-vertical_small slds-border_bottom">Contact Company Information</h1>
+            <p>
+            </p>
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="4" class="slds-p-right_small">
+                    <div class="custom-box">
+                        <lightning:input aura:id="inputData"
+                                         value="{!v.contactFirstName}"
+                                         placeholder="First Name*"
+                                         required="true"/>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="4" class="slds-p-horizontal_small">
+                    <div class="custom-box">
+                        <lightning:input aura:id="inputData"
+                                         value="{!v.contactLastName}"
+                                         placeholder="Last Name*"
+                                         required="true"/>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="4" class="slds-p-left_small">
+                    <div class="custom-box">
+                        <lightning:input aura:id="inputData"
+                                         value="{!v.contactEmail}"
+                                         placeholder="Email*"
+                                         type="Email"
+                                         required="true"/>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="4" class="slds-p-right_small">
+                    <div class="custom-box">
+                        <lightning:input aura:id="inputData"
+                                         value="{!v.contactPhone}"
+                                         placeholder="Mobile phone*"
+                                         type="tel"
+                                         pattern="\+375-[0-9]{2}-[0-9]{7}|\+7-[0-9]{3}-[0-9]{7}|\+48-[0-9]{2}-[0-9]{7}"
+                                         required="true"/> 
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:if>
+        
+        <h1 class="slds-text-heading_medium slds-p-vertical_small slds-border_bottom">Order Information</h1>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="4" class="slds-p-right_small">
+                <div class="custom-box">
+                    <lightning:input aura:id="inputData"
+                                     value="{!v.shippingName}"
+                                     placeholder="Shipping Name*"
+                                     required="true"/>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" class="slds-p-horizontal_small">
+                <div class="custom-box">
+                    <lightning:input aura:id="inputData"
+                                     value="{!v.cargoWeight}"
+                                     placeholder="Cargo Weight*"
+                                     type="number"
+                                     required="true"/>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" class="slds-p-left_small">
+                <div class="custom-box">
+                    <lightning:combobox aura:id="inputData"
+                                        value="{!v.cargoType}" 
+                                        placeholder="Cargo type*" 
+                                        options="{!v.cargoTypeOptions}"
+                                        required="true"/>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" class="slds-p-right_small">
+                <div class="custom-box">
+                    <lightning:combobox aura:id="inputData"
+                                        value="{!v.fromCity}" 
+                                        placeholder="From City*" 
+                                        options="{!v.cityOptions}"
+                                        required="true"/>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" class="slds-p-horizontal_small">
+                <div class="custom-box">
+                    <lightning:combobox aura:id="inputData"
+                                        value="{!v.toCity}" 
+                                        placeholder="To City*" 
+                                        options="{!v.cityOptions}"
+                                        required="true"/>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" class="slds-p-left_small">
+                <div class="custom-box">
+                    <lightning:input aura:id="inputData"
+                                     value="{!v.orderDate}"
+                                     placeholder="Date*"
+                                     type="Date"
+                                     required="true"/>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <div class="row">
+            <lightning:textarea  value="{!v.comments}" name="comments" placeholder="Comments..." />
+        </div>
+        <div class="slds-m-around_large slds-float_right">
+            <lightning:button variant="brand" label="Create a Request" title="Brand action" onclick="{!c.request }"/>
+        </div>
+    </lightning:card>
+</aura:component>
